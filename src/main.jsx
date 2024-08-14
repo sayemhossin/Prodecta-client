@@ -8,6 +8,8 @@ import {
 import Root from './Root/Root';
 import Home from './Home/Home';
 import AuthProvider from './Providers/AuthProvider';
+import Register from './Register/Register';
+import Login from './Login/Login';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,14 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: '/register',
+        element: <Register></Register>
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
       }
     ]
   },

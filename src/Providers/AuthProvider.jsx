@@ -6,58 +6,71 @@ import auth from "../Firebase/Firebase";
 export const AuthContext = createContext(null)
 const googleProvider = new GoogleAuthProvider();
 
-const AuthProvider = ({children}) => {
-    const [user,setUser] = useState('')
-    const [loading,setLoading] = useState(true)
-    
-    const createUser = (email,password)=>{
+const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState('')
+    const [loading, setLoading] = useState(true)
+
+    const createUser = (email, password) => {
         setLoading(true)
-        return createUserWithEmailAndPassword(auth,email,password)
+        return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const signIn = (email,password)=>{
+    const signIn = (email, password) => {
         setLoading(true)
-        return signInWithEmailAndPassword(auth,email,password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
 
-    const googleLogin = ()=>{
+    const googleLogin = () => {
         return signInWithPopup(auth, googleProvider)
-     }
-    
-  
-     const logOut = () =>{
+    }
+
+
+    const logOut = () => {
         setLoading(true)
         return signOut(auth)
     }
+    const updateUserProfile = (name) => {
 
-    useEffect(()=>{
-        const unSubscribe =  onAuthStateChanged(auth, user =>{
-            
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+
+        })
+
+
+    }
+
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, user => {
+
             setLoading(false)
             setUser(user)
-    
-            
-          })
-          return () =>{
-              unSubscribe()
-          }
-      },[])
-    
+
+
+        })
+        return () => {
+            unSubscribe()
+        }
+    }, [])
+
+
+    if (loading) return <p>Loading...</p>
+
     const authInfo = {
         createUser,
         signIn,
         user,
         logOut,
+        updateUserProfile,
         loading,
         googleLogin,
-    
+
     }
-    
+
     return (
         <AuthContext.Provider value={authInfo}>
-        {children}
-    </AuthContext.Provider>
+            {children}
+        </AuthContext.Provider>
     );
 };
 
