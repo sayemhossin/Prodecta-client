@@ -3,18 +3,27 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { AuthContext } from "../Providers/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Login = () => {
     const [show, setShow] = useState(false)
-    const { loading } = useContext(AuthContext)
+    const { loading, signIn } = useContext(AuthContext)
+    const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const form = e.target
-        const name = form.name.value
         const email = form.email.value
         const password = form.password.value
+
+        try {
+            await signIn(email, password)
+            navigate('/')
+            toast.success('SignUp Successful')
+        } catch (err) {
+            toast.error(err.message)
+        }
     }
 
     const handleGoogleSignIn = () => {

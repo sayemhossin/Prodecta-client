@@ -2,6 +2,7 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged,
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import auth from "../Firebase/Firebase";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 export const AuthContext = createContext(null)
 const googleProvider = new GoogleAuthProvider();
@@ -54,7 +55,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
 
-    if (loading) return <p>Loading...</p>
+    if (loading) return <LoadingSpinner></LoadingSpinner>
 
     const authInfo = {
         createUser,

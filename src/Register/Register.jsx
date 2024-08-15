@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 const Register = () => {
 
     const [show, setShow] = useState(false)
-    const { loading, googleLogin } = useContext(AuthContext)
+    const { loading, googleLogin,updateUserProfile,createUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
     const handleSubmit = async(e) => {
@@ -20,7 +20,19 @@ const Register = () => {
         const email = form.email.value
         const password = form.password.value
 
-       
+        try {
+            const result = await createUser(email, password)
+            await updateUserProfile(name)
+     
+            navigate('/')
+            toast.success('SignUp Successful')
+      
+          } catch (err) {
+            toast.error(err.message)
+      
+          }
+
+
 
 
     }
