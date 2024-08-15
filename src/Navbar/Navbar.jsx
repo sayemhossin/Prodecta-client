@@ -1,10 +1,18 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import { Link } from "react-router-dom";
-
+import { Link, NavLink } from "react-router-dom";
+import { GrWebcam } from "react-icons/gr";
+import './Navbar.css'
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
     console.log(user);
+    const link = <>
+        <div className="flex  flex-col text-[17px] lg:flex-row" id="sidebar">
+            <li><NavLink to={'/'}>Home</NavLink></li>
+            <li><NavLink to={'/about'}>About</NavLink></li>
+        </div>
+
+    </>
 
     const handleLogout = () => {
         logOut()
@@ -12,7 +20,7 @@ const Navbar = () => {
             .catch()
     }
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar h-24 bg-base-100 container mx-auto">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -36,18 +44,17 @@ const Navbar = () => {
                         <li><a>Item 3</a></li>
                     </ul>
                 </div>
-                <a className=" font-extrabold text-3xl">Prodecta</a>
+                <p className="text-[#FF8343] text-3xl md:text-6xl flex items-center gap-2 font-bold"> <GrWebcam className="text-3xl md:text-5xl text-blue-600" />Prodecta</p>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    <li><a>Item 1</a></li>
-                    <li><a>Item 3</a></li>
+                <ul className="menu text-2xl font-bold menu-horizontal px-1">
+                    {link}
                 </ul>
             </div>
             <div className="navbar-end">
                 {
-                    user ? <button className="btn"
-                        onClick={handleLogout}>Logout</button> : <Link to={'/login'} className="btn">Login</Link>
+                    user ? <button className="bg-blue-600 hover:bg-blue-700 text-white p-2 px-3 text-xl md:p-3 md:px-6 md:text-2xl"
+                        onClick={handleLogout}>Logout</button> : <Link to={'/login'} className="bg-blue-600 hover:bg-blue-700 text-white p-2 px-3 text-xl md:p-3 md:px-6 md:text-2xl">Login</Link>
                 }
             </div>
         </div>
