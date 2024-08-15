@@ -8,7 +8,7 @@ const Home = () => {
             <Banner></Banner>
             <div>
                 <h1 className="text-center text-5xl md:text-7xl font-bold mt-10 text-green-500 ">All Product</h1>
-                <div className="divider w-[500px] mx-auto"></div>
+                <div className="divider w-full md:w-[500px] mx-auto"></div>
             </div>
             <Products></Products>
             <Footer></Footer>
