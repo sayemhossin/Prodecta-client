@@ -1,7 +1,7 @@
 # Product Management Single Page Application
 
 ## Live Link
-[Live Website Link](https://your-live-website-link.com)
+[Live Website Link](https://prodecta-3aa53.web.app)
 
 ## Overview
 This project is a full-stack Single Page Application (SPA) developed using the MERN stack (MongoDB, Express.js, React.js, Node.js). The application allows users to search, filter, categorize, sort, and paginate through a list of products. Authentication is implemented using Firebase for Google and Email/Password authentication.
