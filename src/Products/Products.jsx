@@ -137,7 +137,7 @@ const Products = () => {
                     ))
                 }
             </div>
-            <div className='flex justify-center mt-12'>
+            <div className='flex justify-center mt-12 mb-20'>
                 {/* Previous Button */}
                 <button
                     disabled={currentPage === 1}

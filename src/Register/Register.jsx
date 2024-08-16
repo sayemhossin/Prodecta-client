@@ -51,12 +51,12 @@ const Register = () => {
     }
     return (
         <div style={{
-            backgroundImage: 'url(https://i.ibb.co/9W0B7Xb/pngtree-blue-sea-and-water-wave-concept-vector-background-image-770486.jpg)',
+            backgroundImage: 'url(https://i.ibb.co/0Qx4m0j/pexels-pixabay-531756.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         }} className='flex justify-center items-center min-h-screen'>
-            <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10  text-gray-900 bg-blue-100'>
+            <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10  text-gray-900 bg-blue-400'>
                 <div className='mb-8 text-center'>
                     <h1 className='my-3 text-4xl font-bold'>Register Now</h1>
                 </div>
@@ -121,7 +121,7 @@ const Register = () => {
                 </form>
                 <div className='flex items-center pt-4 space-x-1'>
                     <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
-                    <p className='px-3 text-sm dark:text-gray-400'>
+                    <p className='px-3 text-sm dark:text-gray-100'>
                         Register with social accounts
                     </p>
                     <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
@@ -133,11 +133,11 @@ const Register = () => {
 
                     <p>Continue with Google</p>
                 </button>
-                <p className='px-6 text-sm text-center text-gray-400'>
+                <p className='px-6 text-sm text-center text-gray-100'>
                     Already have an account?{' '}
                     <Link
                         to='/login'
-                        className='hover:underline hover:text-rose-500 text-gray-600'
+                        className='hover:underline hover:text-orange-100 text-pink-200'
                     >
                         Login
                     </Link>

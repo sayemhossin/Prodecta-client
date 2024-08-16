@@ -40,8 +40,7 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                        <li><a>Item 1</a></li>
-                        <li><a>Item 3</a></li>
+                        {link}
                     </ul>
                 </div>
                 <p className="text-[#FF8343] text-3xl md:text-6xl flex items-center gap-2 font-bold"> <GrWebcam className="text-3xl md:text-5xl text-blue-600" />Prodecta</p>
