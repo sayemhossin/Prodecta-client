@@ -21,14 +21,14 @@ const Products = () => {
     const { data: products, isLoading } = useQuery({
         queryKey: ['products', currentPage, itemsPerPage, search, asc, sortByDate, filter, minPrice, maxPrice],
         queryFn: async () => {
-            const { data } = await axios.get(`http://localhost:5000/products?page=${currentPage}&size=${itemsPerPage}&search=${search}&sort=${asc ? 'asc' : 'desc'}&sortByDate=${sortByDate}&filter=${filter}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
+            const { data } = await axios.get(`https://prodecta.vercel.app/products?page=${currentPage}&size=${itemsPerPage}&search=${search}&sort=${asc ? 'asc' : 'desc'}&sortByDate=${sortByDate}&filter=${filter}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
             return data;
         }
     });
 
     useEffect(() => {
         const getCount = async () => {
-            const { data } = await axios.get(`http://localhost:5000/product-count`);
+            const { data } = await axios.get(`https://prodecta.vercel.app/product-count`);
             setCount(data.count);
         };
         getCount();

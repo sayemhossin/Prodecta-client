@@ -5,7 +5,6 @@ import { GrWebcam } from "react-icons/gr";
 import './Navbar.css'
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
-    console.log(user);
     const link = <>
         <div className="flex  flex-col text-[17px] lg:flex-row" id="sidebar">
             <li><NavLink to={'/'}>Home</NavLink></li>
