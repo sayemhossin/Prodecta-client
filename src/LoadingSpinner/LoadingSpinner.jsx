@@ -1,4 +1,4 @@
-import { TbFidgetSpinner } from "react-icons/tb";
+import { PiSpinnerBallFill } from "react-icons/pi";
 const LoadingSpinner = ({ smallHeight }) => {
     return (
         <div
@@ -8,7 +8,7 @@ const LoadingSpinner = ({ smallHeight }) => {
         justify-center 
         items-center `}
       >
-        <TbFidgetSpinner className="animate-spin" size={100} color='#5BBCFF' />
+        <PiSpinnerBallFill  className="animate-spin" size={100} color='#FF9100' />
       </div>
     );
 };
