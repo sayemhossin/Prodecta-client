@@ -6,49 +6,46 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-
 const Register = () => {
+    const [show, setShow] = useState(false);
+    const [passwordError, setPasswordError] = useState("");
+    const { loading, googleLogin, updateUserProfile, createUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    const [show, setShow] = useState(false)
-    const { loading, googleLogin,updateUserProfile,createUser } = useContext(AuthContext)
-    const navigate = useNavigate()
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
 
-    const handleSubmit = async(e) => {
-        e.preventDefault()
-        const form = e.target
-        const name = form.name.value
-        const email = form.email.value
-        const password = form.password.value
+        if (password.length < 6) {
+            setPasswordError("Password must be at least 6 characters long");
+            return;
+        } else {
+            setPasswordError("");
+        }
 
         try {
-            const result = await createUser(email, password)
-            await updateUserProfile(name)
-     
-            navigate('/')
-            toast.success('SignUp Successful')
-      
-          } catch (err) {
-            toast.error(err.message)
-      
-          }
-
-
-
-
-    }
+            const result = await createUser(email, password);
+            await updateUserProfile(name);
+            navigate('/');
+            toast.success('SignUp Successful');
+        } catch (err) {
+            toast.error(err.message);
+        }
+    };
 
     const handleGoogleSignIn = async () => {
         try {
-            await googleLogin()
-
-            navigate('/')
-            toast.success('SignUp Successful')
-
+            await googleLogin();
+            navigate('/');
+            toast.success('SignUp Successful');
         } catch (err) {
-            toast.error(err.message)
-
+            toast.error(err.message);
         }
-    }
+    };
+
     return (
         <div style={{
             backgroundImage: 'url(https://i.ibb.co/0Qx4m0j/pexels-pixabay-531756.jpg)',
@@ -56,14 +53,14 @@ const Register = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         }} className='flex justify-center items-center min-h-screen'>
-            <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10  text-gray-900 bg-blue-400'>
+            <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 text-gray-900 bg-blue-400'>
                 <div className='mb-8 text-center'>
                     <h1 className='my-3 text-4xl font-bold'>Register Now</h1>
                 </div>
                 <form onSubmit={handleSubmit} className='space-y-6'>
                     <div className='space-y-4'>
                         <div>
-                            <label htmlFor='email' className='block mb-2 text-sm'>
+                            <label htmlFor='name' className='block mb-2 text-sm'>
                                 Name
                             </label>
                             <input
@@ -75,7 +72,6 @@ const Register = () => {
                                 data-temp-mail-org='0'
                             />
                         </div>
-
                         <div>
                             <label htmlFor='email' className='block mb-2 text-sm'>
                                 Email address
@@ -105,10 +101,10 @@ const Register = () => {
                                 placeholder='*******'
                                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-100 text-gray-900'
                             />
-                            <span className="absolute right-2 top-10 cursor-pointer" onClick={() => setShow(!show)}>{show ? <FaEye></FaEye> : <FaEyeSlash />}</span>
+                            <span className="absolute right-2 top-10 cursor-pointer" onClick={() => setShow(!show)}>{show ? <FaEye /> : <FaEyeSlash />}</span>
+                            {passwordError && <p className="text-red-300 text-sm mt-2">{passwordError}</p>}
                         </div>
                     </div>
-
                     <div>
                         <button
                             disabled={loading}
@@ -130,7 +126,6 @@ const Register = () => {
                     disabled={loading}
                     onClick={handleGoogleSignIn} className='disabled:cursor-not-allowed flex justify-center items-center space-x-2 border m-3 p-2 rounded-full hover:bg-[#c1d1e9] border-gray-300 border-rounded cursor-pointer'>
                     <FcGoogle size={32} />
-
                     <p>Continue with Google</p>
                 </button>
                 <p className='px-6 text-sm text-center text-gray-100'>

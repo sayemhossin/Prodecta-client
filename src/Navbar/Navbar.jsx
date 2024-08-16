@@ -52,6 +52,13 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {
+                    user && <div className="mr-4 hidden md:inline font-semibold text-green-600">
+                        <p>Welcome</p>
+                        <p className="text-orange-600">{user?.displayName}</p>
+
+                    </div>
+                }
+                {
                     user ? <button className="bg-blue-600 hover:bg-blue-700 text-white p-2 px-3 text-xl md:p-3 md:px-6 md:text-2xl"
                         onClick={handleLogout}>Logout</button> : <Link to={'/login'} className="bg-blue-600 hover:bg-blue-700 text-white p-2 px-3 text-xl md:p-3 md:px-6 md:text-2xl">Login</Link>
                 }

@@ -169,20 +169,20 @@ const Products = () => {
                 <button
                     disabled={currentPage === 1}
                     onClick={() => handlePaginationButton(currentPage - 1)}
-                    className='px-4 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-blue-500 hover:text-white'
+                    className='md:px-4  px-2 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-blue-500 hover:text-white'
                 >
                     <div className='flex items-center -mx-1'>
-                        <svg xmlns='http://www.w3.org/2000/svg' className='w-6 h-6 mx-1 rtl:-scale-x-100' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                        <svg xmlns='http://www.w3.org/2000/svg' className='md:w-6 w-2 md:h-6 mx-1 rtl:-scale-x-100' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M7 16l-4-4m0 0l4-4m-4 4h18' />
                         </svg>
-                        <span className='mx-1'>previous</span>
+                        <span className='md:mx-1'>previous</span>
                     </div>
                 </button>
                 {/* Numbers */}
                 {pages.map(btnNum => (
                     <button
                         onClick={() => handlePaginationButton(btnNum)}
-                        className={`py-2 px-4 mx-1 rounded-md border border-gray-300 capitalize text-gray-700 ${currentPage === btnNum ? 'bg-blue-500 text-white' : 'hover:bg-blue-500 hover:text-white'}`}
+                        className={`md:py-2 px-2 md:px-4 mx-1 rounded-md border border-gray-300 capitalize text-gray-700 ${currentPage === btnNum ? 'bg-blue-500 text-white' : 'hover:bg-blue-500 hover:text-white'}`}
                         key={btnNum}
                     >
                         {btnNum}
@@ -192,11 +192,11 @@ const Products = () => {
                 <button
                     disabled={currentPage === numberOfPages}
                     onClick={() => handlePaginationButton(currentPage + 1)}
-                    className='px-4 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-blue-500 hover:text-white'
+                    className='md:px-4 px-2 md:py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-blue-500 hover:text-white'
                 >
                     <div className='flex items-center -mx-1'>
-                        <span className='mx-1'>Next</span>
-                        <svg xmlns='http://www.w3.org/2000/svg' className='w-6 h-6 mx-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                        <span className='md:mx-1'>Next</span>
+                        <svg xmlns='http://www.w3.org/2000/svg' className='w-2 md:w-6 md:h-6 mx-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M17 8l4 4m0 0l-4 4m4-4H3' />
                         </svg>
                     </div>
